@@ -33,11 +33,13 @@ Alternately, you can upload the dummy.xml file included in the root of the repo.
 
 ## Connecting WordPress & Ionic
 8/ Navigate back to the ionic project folder and open the src/environment.ts file - you’ll see these settings:
-```export const environment = {
+```
+export const environment = {
 	site_url : '<YOUR_LOCAL_INSTALL_URL>',
 	ideas_url : '/wp-json/wp/v2/ideas',
 	jwt_url: '/wp-json/jwt-auth/v1/token',
-}```
+}
+```
 
 9/ Change the site_url to the root URL of your WordPress install
 10/ If you set the REST API base slug to anything other than ideas, change it here
