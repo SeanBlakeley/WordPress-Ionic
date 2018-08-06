@@ -17,15 +17,22 @@ export class IdeasProvider {
 	}
 
 	getIdeas() {
-		return this.http.get( this.api_url + '?_embed' );
+		return this.http.get( this.api_url  );
 	}
 
-	postIdea( title, content, author ) {
+	postIdea( title, content, author, reminderTime, reminderContent ) {
+
+	  let metaObj = {
+      _reminder_time: reminderTime,
+      _reminder_content: reminderContent
+    };
+
 		let data = {
 			title: title,
 			content: content,
 			author: author,
-			status: 'publish'
+			status: 'publish',
+      meta: metaObj
 		};
 //    console.log(data);
 		let token = JSON.parse( localStorage.getItem( 'wpIonicToken' ) ).token;

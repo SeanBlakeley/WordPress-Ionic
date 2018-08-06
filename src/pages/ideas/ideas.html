@@ -25,7 +25,12 @@
 		<ion-card-content>
 			<ion-card-title [innerHTML]="idea.title.rendered">
 			</ion-card-title>
-
+      <ion-item text-center *ngIf="idea.meta._reminder_time">
+        <button ion-button icon-start>
+          <ion-icon name="timer"></ion-icon>
+          {{ idea.meta._reminder_time | date: 'short' }}
+        </button>
+      </ion-item>
 		</ion-card-content>
 	</ion-card>
 

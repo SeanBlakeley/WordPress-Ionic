@@ -20,6 +20,8 @@ export class CreateIdeaPage {
 	title;
 	content;
 	author;
+	reminderTime;
+	reminderContent;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, private ideasProvider: IdeasProvider ) {
 	}
@@ -29,7 +31,7 @@ export class CreateIdeaPage {
 	}
 
 	onAddIdea() {
-		this.ideasProvider.postIdea( this.title, this.content, this.author).subscribe( data => {
+		this.ideasProvider.postIdea( this.title, this.content, this.author, this.reminderTime, this.reminderContent ).subscribe( data => {
 			console.log( data );
 			this.navCtrl.push( 'TabsPage' );
 		});

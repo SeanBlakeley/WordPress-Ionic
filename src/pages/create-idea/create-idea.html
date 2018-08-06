@@ -22,9 +22,13 @@
 		<ion-item>
 			<ion-textarea placeholder='content' [(ngModel)]='content'></ion-textarea>
 		</ion-item>
-		<ion-item>
-			<ion-input type='text' placeholder='author' [(ngModel)]='author'></ion-input>
-		</ion-item>
+    <ion-item>
+      <ion-label>Reminder Time</ion-label>
+      <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]='reminderTime'></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-textarea placeholder='reminderContent' [(ngModel)]='reminderContent'></ion-textarea>
+    </ion-item>
 	</ion-list>
 
 	<button ion-button block (click)="onAddIdea()">Add Idea</button>
