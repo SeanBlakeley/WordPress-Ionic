@@ -26,12 +26,19 @@
 <ion-content padding>
 
 	<ion-card>
-		<img src="{{ idea.featured_media ? idea._embedded['wp:featuredmedia'][0].source_url : '' }}" />
-		<ion-card-content [innerHTML]="idea.content.rendered">
+		<img *ngIf="idea.featured_media" src="{{ idea.featured_media ? idea._embedded['wp:featuredmedia'][0].source_url : '' }}" />
+		<ion-card-content [innerHTML]="idea.title.rendered">
 			<ion-card-title [innerHTML]="idea.title.rendered">
 			</ion-card-title>
-
 		</ion-card-content>
+    <ion-item text-center *ngIf="idea.meta._reminder_time">
+      <ion-icon name="timer"></ion-icon>
+      {{ idea.meta._reminder_time | date: 'short' }}
+    </ion-item>
+    <ion-item text-center *ngIf="idea.meta._reminder_time">
+      <ion-icon name="paper"></ion-icon>
+      {{ idea.meta._reminder_content }}
+    </ion-item>
 	</ion-card>
 
 </ion-content>

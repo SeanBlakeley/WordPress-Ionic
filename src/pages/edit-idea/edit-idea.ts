@@ -20,7 +20,9 @@ export class EditIdeaPage {
 	id;
 	title;
 	content;
-	author;
+  reminderTime;
+  reminderContent;
+
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, private ideasProvider: IdeasProvider) {
 		this.idea = this.navParams.get( 'idea' );
@@ -29,14 +31,17 @@ export class EditIdeaPage {
 		this.content = this.idea.content.rendered;
 		this.id = this.idea.id;
 
-	}
+    this.reminderTime = this.idea.meta._reminder_time;
+    this.reminderContent = this.idea.meta._reminder_content;
+
+  }
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad EditIdeaPage');
 	}
 
 	onEditIdea() {
-		this.ideasProvider.editIdea( this.id, this.title, this.content ).subscribe( data => {
+		this.ideasProvider.editIdea( this.id, this.title, this.content, this.reminderTime, this.reminderContent ).subscribe( data => {
 			console.log( data );
 			this.navCtrl.push( 'TabsPage' );
 		});

@@ -46,11 +46,18 @@ export class IdeasProvider {
 		return this.http.post( this.api_url, data, { headers: headers } );
 	}
 
-	editIdea( id, title, content ) {
+	editIdea( id, title, content, reminderTime, reminderContent ) {
+
+    let metaObj = {
+      _reminder_time: reminderTime,
+      _reminder_content: reminderContent
+    };
+
 		let data = {
 			title: title,
 			content: content,
-			status: 'publish'
+			status: 'publish',
+      meta: metaObj
 		};
 
 		let token = JSON.parse( localStorage.getItem( 'wpIonicToken' ) ).token;
