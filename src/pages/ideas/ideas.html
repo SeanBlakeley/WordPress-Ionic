@@ -15,12 +15,14 @@
 <ion-content>
 	<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 	<ion-list>
-		<ion-item *ngFor="let item of items"  (click)="onShowIdeaDetails( item );">
+
+		<button ion-item *ngFor="let item of items"  (click)="onShowIdeaDetails( item );">
 			<ion-card-content>
 				<ion-card-title [innerHTML]="item.title.rendered">
 				</ion-card-title>
 
 			</ion-card-content>
-		</ion-item>
+		</button>
+		
 	</ion-list>
 </ion-content>
