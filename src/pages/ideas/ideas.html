@@ -7,7 +7,7 @@
 <ion-header>
 
 	<ion-navbar>
-		<ion-title>Ideas via API</ion-title>
+		<ion-title>Ideas</ion-title>
 		<ion-buttons end>
 		 <button ion-button icon-only (click)="onGoToCreateIdea()">
 			 <ion-icon name="add-circle"></ion-icon>
@@ -17,16 +17,15 @@
 
 </ion-header>
 
+<ion-content>
+	<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+	<ion-list>
+		<ion-item *ngFor="let item of items"  (click)="onShowIdeaDetails( item );">
+			<ion-card-content>
+				<ion-card-title [innerHTML]="item.title.rendered">
+				</ion-card-title>
 
-<ion-content padding>
-
-	<ion-card ion-item *ngFor="let idea of ideas" (click)="onShowIdeaDetails( idea );">
-		<img src="{{ idea.featured_media ? idea._embedded['wp:featuredmedia'][0].source_url : '' }}" />
-		<ion-card-content>
-			<ion-card-title [innerHTML]="idea.title.rendered">
-			</ion-card-title>
-
-		</ion-card-content>
-	</ion-card>
-
+			</ion-card-content>
+		</ion-item>
+	</ion-list>
 </ion-content>
