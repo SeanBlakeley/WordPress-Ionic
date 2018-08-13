@@ -17,6 +17,7 @@ export class IdeasProvider {
 	}
 
 	getIdeas() {
+		console.log("refreshed ideas");
 		return this.http.get( this.api_url + '?_embed' );
 	}
 

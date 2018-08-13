@@ -11,28 +11,29 @@ import { IdeasProvider } from '../../providers/ideas/ideas';
 
 @IonicPage()
 @Component({
-  selector: 'page-ideas-detail',
-  templateUrl: 'ideas-detail.html',
+	selector: 'page-ideas-detail',
+	templateUrl: 'ideas-detail.html',
 })
 export class IdeasDetailPage {
 
-  idea;
-  id;
+	idea;
+	id;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private ideasProvider: IdeasProvider) {
-    this.idea = this.navParams.get( 'idea' );
-    console.log( this.idea );
-  }
+	constructor(public navCtrl: NavController, public navParams: NavParams, private ideasProvider: IdeasProvider) {
+		this.idea = this.navParams.get( 'idea' );
+		console.log( this.idea );
+	}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad IdeasDetailPage');
-  }
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad IdeasDetailPage');
+	}
 
-  onGoToEditIdea() {
-    this.navCtrl.push( 'EditIdeaPage', { idea: this.idea } );
-  }
+	onGoToEditIdea() {
+		this.navCtrl.push( 'EditIdeaPage', { idea: this.idea } );
+	}
 
-  onGoToDeleteIdea() {
-    this.ideasProvider.deleteIdea( this.idea.id );
-  }
+	onGoToDeleteIdea() {
+		this.ideasProvider.deleteIdea( this.idea.id );
+		this.navCtrl.push('IdeasPage');
+	}
 }

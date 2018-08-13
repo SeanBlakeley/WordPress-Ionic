@@ -14,7 +14,8 @@ export class IdeasPage {
 	constructor(public navCtrl: NavController, public navParams: NavParams, private ideasProvider: IdeasProvider) {
 
 		this.ideasProvider.getIdeas().subscribe(data => {
-			if ( Object.keys(data).length <= 10 ) {
+
+			if ( Object.keys(data).length <= 0 ) {
 				this.pushPage();
 			}
 			this.ideas = data;
@@ -34,6 +35,7 @@ export class IdeasPage {
 	}
 
 	ionViewDidLoad() {
+		console.log(this.ideas);
 		console.log('ionViewDidLoad IdeasPage');
 	}
 
