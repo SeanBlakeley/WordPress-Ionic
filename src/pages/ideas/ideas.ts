@@ -1,13 +1,7 @@
-/**
- * Generated class for the IdeasPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { IdeasProvider } from '../../providers/ideas/ideas';
+import { FirstIdeaPage } from '../first-idea';
 
 @IonicPage()
 @Component({
@@ -20,9 +14,19 @@ export class IdeasPage {
 	constructor(public navCtrl: NavController, public navParams: NavParams, private ideasProvider: IdeasProvider) {
 
 		this.ideasProvider.getIdeas().subscribe(data => {
+			if ( Object.keys(data).length <= 10 ) {
+				this.pushPage();
+			}
 			this.ideas = data;
 			this.initializeItems();
 		});
+	}
+
+	pushPage(){
+		// push another page on to the navigation stack
+		// causing the nav controller to transition to the new page
+		// optional data can also be passed to the pushed page.
+		this.navCtrl.push('FirstIdeaPage');
 	}
 
 	initializeItems() {
