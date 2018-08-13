@@ -17,6 +17,8 @@ import { IdeasProvider } from '../../providers/ideas/ideas';
 })
 export class CreateIdeaPage {
 
+	reminderDate: String = new Date().toISOString();
+
 	title;
 	content;
 	author;

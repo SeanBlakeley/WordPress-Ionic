@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { IdeasProvider } from '../../providers/ideas/ideas';
-import { FirstIdeaPage } from '../first-idea';
+// import { FirstIdeaPage } from '../first-idea';
 
 @IonicPage()
 @Component({
@@ -10,6 +10,7 @@ import { FirstIdeaPage } from '../first-idea';
 })
 export class IdeasPage {
 	ideas;
+	items;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, private ideasProvider: IdeasProvider) {
 

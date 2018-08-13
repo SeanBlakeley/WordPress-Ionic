@@ -27,11 +27,7 @@
 
 	<ion-card>
 		<img src="{{ idea.featured_media ? idea._embedded['wp:featuredmedia'][0].source_url : '' }}" />
-		<ion-card-content [innerHTML]="idea.content.rendered">
-			<ion-card-title [innerHTML]="idea.title.rendered">
-			</ion-card-title>
-
-		</ion-card-content>
+		<ion-card-content [innerHTML]="idea.title.rendered"></ion-card-content>
 	</ion-card>
 
 </ion-content>

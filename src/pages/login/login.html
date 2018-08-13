@@ -17,10 +17,12 @@
 
 <ion-list>
 	<ion-item>
-		<ion-input type='text' placeholder='username' [(ngModel)]='username'></ion-input>
+		<ion-label floating>Username</ion-label>
+		<ion-input type='text' [(ngModel)]='username'></ion-input>
 	</ion-item>
 	<ion-item>
-		<ion-input type='password' placeholder='password' [(ngModel)]='password'></ion-input>
+		<ion-label floating>Password</ion-label>
+		<ion-input type='password' [(ngModel)]='password'></ion-input>
 	</ion-item>
 </ion-list>
 
