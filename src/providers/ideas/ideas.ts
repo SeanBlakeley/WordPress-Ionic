@@ -18,19 +18,19 @@ export class IdeasProvider {
 
 	getIdeas() {
 		console.log("refreshed ideas");
-		return this.http.get( this.api_url + '?_embed' );
+		let user_id = JSON.parse( localStorage.getItem( 'wpIonicToken' ) ).user_id;
+		return this.http.get( this.api_url + '?_embed&author=' + user_id );
 	}
 
 	postIdea( title, reminderText, reminderDate ) {
 		let data = {
 			title: title,
-			meta: [{
-				_reminder_content: reminderText,
-				_reminder_time: reminderDate,
-			}],
+			reminder_content: reminderText,
+			reminder_time: reminderDate,
+			author: JSON.parse( localStorage.getItem( 'wpIonicToken' ) ).user_id,
 			status: 'publish'
 		};
-//    console.log(data);
+
 		let token = JSON.parse( localStorage.getItem( 'wpIonicToken' ) ).token;
 
 		let headers = new HttpHeaders({
@@ -45,10 +45,9 @@ export class IdeasProvider {
 	editIdea( id, title, reminderText, reminderDate ) {
 		let data = {
 			title: title,
-			meta: [{
-				_reminder_content: reminderText,
-				_reminder_time: reminderDate,
-			}],
+			reminder_content: reminderText,
+			reminder_time: reminderDate,
+			author: JSON.parse( localStorage.getItem( 'wpIonicToken' ) ).user_id,
 			status: 'publish'
 		};
 
@@ -59,7 +58,7 @@ export class IdeasProvider {
 			'Authorization': 'Bearer ' + token
 		});
 
-			console.log( headers);
+		console.log( headers);
 		return this.http.put( this.api_url + '/' + id, data, { headers: headers } );
 	}
 

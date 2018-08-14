@@ -16,8 +16,6 @@ import { IdeasProvider } from '../../providers/ideas/ideas';
 })
 export class EditIdeaPage {
 
-	reminderDate: String = new Date().toISOString();
-
 	idea;
 	id;
 	title;
@@ -28,9 +26,8 @@ export class EditIdeaPage {
 		this.idea = this.navParams.get( 'idea' );
 
 		this.title = this.idea.title.rendered;
-		this.reminderText = this.idea.meta._reminder_content;
-		this.reminderDate = this.idea.meta._reminder_time;
-		console.log( "Reminder time" + this.idea.meta._reminder_time);
+		this.reminderText = this.idea.reminder_content;
+		this.reminderDate = this.idea.reminder_time;
 		this.id = this.idea.id;
 
 	}
