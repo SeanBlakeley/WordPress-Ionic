@@ -22,7 +22,6 @@ export class EditIdeaPage {
 	id;
 	title;
 	reminderText;
-	reminderDate;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, private ideasProvider: IdeasProvider) {
 		this.idea = this.navParams.get( 'idea' );
