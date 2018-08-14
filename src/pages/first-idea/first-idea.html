@@ -6,14 +6,25 @@
 -->
 
 <ion-content padding>
-	<ul>
-		<li>
-			<h3>
-				Add your first idea
-			</h3>
-		</li>
-	</ul>
-	<button ion-button icon-only (click)="onGoToCreateIdea()">
-		<ion-icon name="add-circle"></ion-icon>
-	</button>
+	<ion-row>
+	<ion-col text-center>
+		<img text-center class="light-blub" src="../assets/imgs/ideation-light-bulb-larger.png" />
+	</ion-col>
+</ion-row>
+<ion-row>
+<ion-col text-center>
+	<h3>
+		Add your first idea
+	</h3>
+</ion-col>
+</ion-row>
+<ion-row>
+<ion-col text-center>
+	<ion-fab center top>
+			<button ion-fab large (click)="onGoToCreateIdea()">
+				<ion-icon name="add"></ion-icon>
+			</button>
+		</ion-fab>
+</ion-col>
+</ion-row>
 </ion-content>
