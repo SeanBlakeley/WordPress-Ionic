@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-	<ion-navbar>
+	<ion-navbar color="primary">
 		<ion-title>Create a Idea</ion-title>
 	</ion-navbar>
 
@@ -20,10 +20,10 @@
 			<ion-input type='text' placeholder='title' [(ngModel)]='title'></ion-input>
 		</ion-item>
 		<ion-item>
-			<ion-textarea placeholder='content' [(ngModel)]='content'></ion-textarea>
+			<ion-input type='text' placeholder='reminder text (optional)' [(ngModel)]='reminderText'></ion-input>
 		</ion-item>
 		<ion-item>
-			<ion-label>Reminder</ion-label>
+			<ion-label>Reminder Date (optional)</ion-label>
 			<ion-datetime displayFormat="MMM DD YYYY"  min="2018" max="2035-01-01" [(ngModel)]="reminderDate"></ion-datetime>
 		</ion-item>
 	</ion-list>

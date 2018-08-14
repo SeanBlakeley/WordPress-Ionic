@@ -21,11 +21,13 @@ export class IdeasProvider {
 		return this.http.get( this.api_url + '?_embed' );
 	}
 
-	postIdea( title, content, author ) {
+	postIdea( title, reminderText, reminderDate ) {
 		let data = {
 			title: title,
-			content: content,
-			author: author,
+			meta: [{
+				_reminder_content: reminderText,
+				_reminder_time: reminderDate,
+			}],
 			status: 'publish'
 		};
 //    console.log(data);
@@ -40,10 +42,13 @@ export class IdeasProvider {
 		return this.http.post( this.api_url, data, { headers: headers } );
 	}
 
-	editIdea( id, title, content ) {
+	editIdea( id, title, reminderText, reminderDate ) {
 		let data = {
 			title: title,
-			content: content,
+			meta: [{
+				_reminder_content: reminderText,
+				_reminder_time: reminderDate,
+			}],
 			status: 'publish'
 		};
 

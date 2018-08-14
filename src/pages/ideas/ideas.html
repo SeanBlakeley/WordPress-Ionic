@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-	<ion-navbar>
+	<ion-navbar color="primary">
 		<ion-title>Ideas</ion-title>
 	</ion-navbar>
 
@@ -16,13 +16,24 @@
 	<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 	<ion-list>
 
-		<button ion-item *ngFor="let item of items"  (click)="onShowIdeaDetails( item );">
-			<ion-card-content>
-				<ion-card-title [innerHTML]="item.title.rendered">
-				</ion-card-title>
+		<ion-item-sliding *ngFor="let item of items">
 
-			</ion-card-content>
-		</button>
-		
+			<ion-item (click)="onShowIdeaDetails( item );">
+				<ion-card-content>
+					<ion-card-title [innerHTML]="item.title.rendered">
+					</ion-card-title>
+				</ion-card-content>
+			</ion-item>
+
+			<ion-item-options side="left">
+				<button ion-button color="danger" (click)="onDeleteIdeaDetails( item );">Delete Idea</button>
+			</ion-item-options>
+
+			<ion-item-options side="right">
+				<button ion-button (click)="onEditIdea( item );">Edit Idea</button>
+			</ion-item-options>
+		</ion-item-sliding>
+
+
 	</ion-list>
 </ion-content>

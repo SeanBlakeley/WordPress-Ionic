@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-	<ion-navbar>
+	<ion-navbar color="primary">
 		<ion-title>Edit Idea</ion-title>
 	</ion-navbar>
 
@@ -20,7 +20,7 @@
 			<ion-input type='text' placeholder='title' [(ngModel)]='title'></ion-input>
 		</ion-item>
 		<ion-item>
-			<ion-textarea placeholder='content' [(ngModel)]='content'></ion-textarea>
+			<ion-input type='text' placeholder='reminder text (optional)' [(ngModel)]='reminderText'></ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label>Reminder</ion-label>

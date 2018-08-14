@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { IdeasProvider } from '../../providers/ideas/ideas';
-// import { FirstIdeaPage } from '../first-idea';
+
 
 @IonicPage()
 @Component({
@@ -11,8 +11,9 @@ import { IdeasProvider } from '../../providers/ideas/ideas';
 export class IdeasPage {
 	ideas;
 	items;
+	idea;
 
-	constructor(public navCtrl: NavController, public navParams: NavParams, private ideasProvider: IdeasProvider) {
+	constructor(public navCtrl: NavController, public navParams: NavParams, private ideasProvider: IdeasProvider, public alertCtrl: AlertController) {
 
 		this.ideasProvider.getIdeas().subscribe(data => {
 
@@ -22,6 +23,30 @@ export class IdeasPage {
 			this.ideas = data;
 			this.initializeItems();
 		});
+
+	}
+
+	showDeleteConfirm(ideaID) {
+		const confirm = this.alertCtrl.create({
+			title: 'Delete this Idea?',
+			message: 'Are you sure you want to delete this idea?',
+			buttons: [
+				{
+					text: 'Delete',
+					handler: () => {
+						this.ideasProvider.deleteIdea( ideaID );
+						this.navCtrl.push('IdeasPage');
+					}
+				},
+				{
+					text: 'Cancel',
+					handler: () => {
+						this.navCtrl.push('IdeasPage');
+					}
+				}
+			]
+		});
+		confirm.present();
 	}
 
 	pushPage(){
@@ -46,6 +71,14 @@ export class IdeasPage {
 
 	onGoToCreateIdea() {
 		this.navCtrl.push('CreateIdeaPage');
+	}
+
+	onDeleteIdeaDetails(idea) {
+		this.showDeleteConfirm(idea.id);
+	}
+
+	onEditIdea(idea) {
+		return this.navCtrl.push('EditIdeaPage', { idea: idea } );
 	}
 
 	getItems(ev) {

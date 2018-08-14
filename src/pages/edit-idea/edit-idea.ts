@@ -21,14 +21,16 @@ export class EditIdeaPage {
 	idea;
 	id;
 	title;
-	content;
-	author;
+	reminderText;
+	reminderDate;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, private ideasProvider: IdeasProvider) {
 		this.idea = this.navParams.get( 'idea' );
 
 		this.title = this.idea.title.rendered;
-		this.content = this.idea.content.rendered;
+		this.reminderText = this.idea.meta._reminder_content;
+		this.reminderDate = this.idea.meta._reminder_time;
+		console.log( "Reminder time" + this.idea.meta._reminder_time);
 		this.id = this.idea.id;
 
 	}
@@ -38,7 +40,7 @@ export class EditIdeaPage {
 	}
 
 	onEditIdea() {
-		this.ideasProvider.editIdea( this.id, this.title, this.content ).subscribe( data => {
+		this.ideasProvider.editIdea( this.id, this.title, this.reminderText, this.reminderDate ).subscribe( data => {
 			console.log( data );
 			this.navCtrl.push( 'TabsPage' );
 		});

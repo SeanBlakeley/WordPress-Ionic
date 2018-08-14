@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { IdeasProvider } from '../../providers/ideas/ideas';
 
 /**
@@ -17,9 +17,10 @@ import { IdeasProvider } from '../../providers/ideas/ideas';
 export class IdeasDetailPage {
 
 	idea;
+	ideas;
 	id;
 
-	constructor(public navCtrl: NavController, public navParams: NavParams, private ideasProvider: IdeasProvider) {
+	constructor(public navCtrl: NavController, public navParams: NavParams, private ideasProvider: IdeasProvider, public alertCtrl: AlertController) {
 		this.idea = this.navParams.get( 'idea' );
 		console.log( this.idea );
 	}
@@ -33,7 +34,32 @@ export class IdeasDetailPage {
 	}
 
 	onGoToDeleteIdea() {
-		this.ideasProvider.deleteIdea( this.idea.id );
+		this.showDeleteConfirm(this.idea.id);
 		this.navCtrl.push('IdeasPage');
 	}
+
+
+	showDeleteConfirm(ideaID) {
+		const confirm = this.alertCtrl.create({
+			title: 'Delete this Idea?',
+			message: 'Are you sure you want to delete this idea?',
+			buttons: [
+				{
+					text: 'Delete',
+					handler: () => {
+						this.ideasProvider.deleteIdea( ideaID );
+						this.navCtrl.push('IdeasPage');
+					}
+				},
+				{
+					text: 'Cancel',
+					handler: () => {
+						this.navCtrl.push('IdeasPage');
+					}
+				}
+			]
+		});
+		confirm.present();
+	}
+
 }
