@@ -17,7 +17,7 @@ export class IdeasPage {
 
 		this.ideasProvider.getIdeas().subscribe(data => {
 
-			if ( Object.keys(data).length <= 20 ) {
+			if ( Object.keys(data).length <= 0 ) {
 				this.pushPage();
 			}
 			this.ideas = data;

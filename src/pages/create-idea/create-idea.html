@@ -17,15 +17,17 @@
 
 	<ion-list>
 		<ion-item>
-			<ion-input type='text' placeholder='title' [(ngModel)]='title'></ion-input>
+			<ion-label> <ion-icon name="ios-bulb"></ion-icon></ion-label>
+			<ion-input  clearInput type="text" placeholder="Idea" [(ngModel)]='title'></ion-input>
 		</ion-item>
 		<ion-item>
-			<ion-input type='text' placeholder='reminder text (optional)' [(ngModel)]='reminderText'></ion-input>
-		</ion-item>
-		<ion-item>
-			<ion-label>Reminder Date (optional)</ion-label>
-			<ion-datetime displayFormat="MMM DD YYYY"  min="2018" max="2035-01-01" [(ngModel)]="reminderDate"></ion-datetime>
-		</ion-item>
+				<ion-label> <ion-icon name="ios-text"></ion-icon></ion-label>
+				<ion-input  clearInput type="text" placeholder="Reminder Text (optional)" [(ngModel)]='reminderText'></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label> <ion-icon name="ios-alarm"></ion-icon></ion-label>
+	<ion-datetime displayFormat="MMM DD YYYY" min="2018" max="2035-01-01"  placeholder="Reminder Date (optional)" [(ngModel)]="reminderDate"></ion-datetime>
+</ion-item>
 	</ion-list>
 
 	<button ion-button block (click)="onAddIdea()">Add Idea</button>
