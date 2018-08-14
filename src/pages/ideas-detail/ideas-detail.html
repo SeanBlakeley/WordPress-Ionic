@@ -30,11 +30,11 @@
 		<ion-card-content>
 			<ion-card-title [innerHTML]="idea.title.rendered">
 			</ion-card-title>
-			<ion-item>
+			<ion-item *ngIf="idea.meta._reminder_content">
 				<ion-icon name="ios-text" item-start></ion-icon>
 				<ion-item item-end [innerHTML]="idea.meta._reminder_content"></ion-item>
 			</ion-item>
-			<ion-item>
+			<ion-item *ngIf="idea.meta._reminder_time">
 				<ion-icon name="ios-alarm" item-start></ion-icon>
 				<ion-badge item-end [innerHTML]="idea.meta._reminder_time"></ion-badge>
 			</ion-item>
