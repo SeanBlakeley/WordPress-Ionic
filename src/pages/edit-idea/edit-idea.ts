@@ -27,7 +27,7 @@ export class EditIdeaPage {
 
 		this.title = this.idea.title.rendered;
 		this.reminderText = this.idea.reminder_content;
-		this.reminderDate = this.idea.reminder_time;
+		this.reminderDate = this.idea.reminder_date;
 		this.id = this.idea.id;
 
 	}

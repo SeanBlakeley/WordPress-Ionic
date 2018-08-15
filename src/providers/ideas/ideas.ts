@@ -26,7 +26,7 @@ export class IdeasProvider {
 		let data = {
 			title: title,
 			reminder_content: reminderText,
-			reminder_time: reminderDate,
+			reminder_date: 1534327464,
 			author: JSON.parse( localStorage.getItem( 'wpIonicToken' ) ).user_id,
 			status: 'publish'
 		};
@@ -46,7 +46,7 @@ export class IdeasProvider {
 		let data = {
 			title: title,
 			reminder_content: reminderText,
-			reminder_time: reminderDate,
+			reminder_date: 1534327464,
 			author: JSON.parse( localStorage.getItem( 'wpIonicToken' ) ).user_id,
 			status: 'publish'
 		};

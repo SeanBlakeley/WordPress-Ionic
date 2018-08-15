@@ -29,9 +29,9 @@
 				<ion-icon name="ios-text" item-start></ion-icon>
 				<ion-item item-end [innerHTML]="idea.reminder_content"></ion-item>
 			</ion-item>
-			<ion-item *ngIf="idea.reminder_time">
+			<ion-item *ngIf="idea.reminder_date">
 				<ion-icon name="ios-alarm" item-start></ion-icon>
-				<ion-badge item-end [innerHTML]="idea.reminder_time"></ion-badge>
+				<ion-badge [innerHTML]="idea.reminder_date"></ion-badge>
 			</ion-item>
 		</ion-card-content>
 	</ion-card>
