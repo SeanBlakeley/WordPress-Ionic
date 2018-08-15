@@ -47,7 +47,6 @@ export class IdeasProvider {
 			title: title,
 			reminder_content: reminderText,
 			reminder_date: 1534327464,
-			author: JSON.parse( localStorage.getItem( 'wpIonicToken' ) ).user_id,
 			status: 'publish'
 		};
 
