@@ -18,6 +18,7 @@ import { IdeasProvider } from '../../providers/ideas/ideas';
 export class CreateIdeaPage {
 
 	title;
+	content;
 	reminderText;
 	reminderDate;
 
