@@ -17,15 +17,15 @@ export class AuthProvider {
 		console.log('Hello AuthProvider Provider');
 	}
 
-	postLogin( username, password ) {
+	postLogin(username, password) {
 		let data = {
 			username: username,
 			password: password
 		};
 
 		let headers = new HttpHeaders();
-		headers.set( 'Content-Type', 'application/json' );
-		return this.http.post( this.api_url, data, { headers: headers } );
+		headers.set('Content-Type', 'application/json');
+		return this.http.post(this.api_url, data, { headers: headers });
 	}
 
 }

@@ -1,18 +1,19 @@
 <!--
-	Generated template for the IdeasDetailPage page.
+Generated template for the IdeasDetailPage page.
 
-	See http://ionicframework.com/docs/components/#navigation for more info on
-	Ionic pages and navigation.
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
 -->
 <ion-header>
 
 	<ion-navbar color="primary">
-		<ion-title><ion-icon name="ios-bulb"></ion-icon>  Idea</ion-title>
-	 <ion-buttons end>
-		<button ion-button icon-only (click)="onGoToDeleteIdea()">
-			<ion-icon name="close-circle"></ion-icon>
-		</button>
-	</ion-buttons>
+		<ion-title>
+			<ion-icon name="ios-bulb"></ion-icon> Idea</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="onGoToDeleteIdea()">
+<ion-icon name="close-circle"></ion-icon>
+</button>
+		</ion-buttons>
 	</ion-navbar>
 
 </ion-header>
@@ -23,15 +24,14 @@
 	<ion-card (click)="onGoToEditIdea()">
 		<img src="{{ idea.featured_media ? idea._embedded['wp:featuredmedia'][0].source_url : '' }}" />
 		<ion-card-content>
-			<ion-card-title [innerHTML]="idea.title.rendered">
-			</ion-card-title>
+			<ion-card-title [innerHTML]="idea.title.rendered"></ion-card-title>
 			<ion-item *ngIf="idea.reminder_content">
 				<ion-icon name="ios-text" item-start></ion-icon>
 				<ion-item item-end [innerHTML]="idea.reminder_content"></ion-item>
 			</ion-item>
-			<ion-item *ngIf="idea.reminder_date">
+			<ion-item *ngIf="idea.reminder_date > 0">
 				<ion-icon name="ios-alarm" item-start></ion-icon>
-				<ion-badge [innerHTML]="idea.reminder_date"></ion-badge>
+				<ion-badge>{{ idea.reminder_date | date: 'dd-MM-yyyy' }}</ion-badge>
 			</ion-item>
 		</ion-card-content>
 	</ion-card>

@@ -7,7 +7,8 @@
 <ion-header>
 
 	<ion-navbar color="primary">
-		<ion-title><ion-icon name="ios-bulb"></ion-icon>  Ideas</ion-title>
+		<ion-title>
+			<ion-icon name="ios-bulb"></ion-icon> Ideas</ion-title>
 	</ion-navbar>
 
 </ion-header>
@@ -20,23 +21,23 @@
 
 			<ion-item (click)="onShowIdeaDetails( item );">
 				<ion-card-content>
-					<ion-card-title [innerHTML]="item.title.rendered">
-					</ion-card-title>
-					<ion-item *ngIf="item.meta._reminder_date">
-						<ion-icon name="ios-alarm" item-start></ion-icon>
-					</ion-item>
+					<ion-card-title text-wrap [innerHTML]="item.title.rendered"></ion-card-title>
+					<ion-fab right top *ngIf="item.reminder_date > 0">
+						<button ion-fab large>
+							<ion-icon name="ios-alarm"></ion-icon>
+						</button>
+					</ion-fab>
 				</ion-card-content>
 			</ion-item>
 
-			<ion-item-options side="left">
-				<button ion-button color="danger" (click)="onDeleteIdeaDetails( item );">Delete Idea</button>
+			<ion-item-options side="right">
+				<button ion-button color="danger" (click)="onDeleteIdeaDetails( item );">Delete</button>
 			</ion-item-options>
 
-			<ion-item-options side="right">
+			<ion-item-options side="left">
 				<button ion-button (click)="onEditIdea( item );">Edit Idea</button>
 			</ion-item-options>
 		</ion-item-sliding>
-
 
 	</ion-list>
 </ion-content>

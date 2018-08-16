@@ -1,41 +1,41 @@
 <!--
-	Generated template for the LoginPage page.
+Generated template for the LoginPage page.
 
-	See http://ionicframework.com/docs/components/#navigation for more info on
-	Ionic pages and navigation.
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
 -->
 
 <ion-content padding>
 	<ion-row>
-	<ion-col text-center>
-		<img text-center class="light-blub" src="../assets/imgs/ideation-light-blub.png" />
-	</ion-col>
-</ion-row>
-<ion-list>
-	<ion-item>
-		<ion-label floating>Username</ion-label>
-		<ion-input type='text' [(ngModel)]='username'></ion-input>
-	</ion-item>
-	<ion-item>
-		<ion-label floating>Password</ion-label>
-		<ion-input type='password' [(ngModel)]='password'></ion-input>
-	</ion-item>
-</ion-list>
+		<ion-col text-center>
+			<img text-center class="light-blub" src="../assets/imgs/ideation-light-blub.png" />
+		</ion-col>
+	</ion-row>
+	<ion-list>
+		<ion-item>
+			<ion-label floating>Username</ion-label>
+			<ion-input type='text' [(ngModel)]='username'></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label floating>Password</ion-label>
+			<ion-input type='password' [(ngModel)]='password'></ion-input>
+		</ion-item>
+	</ion-list>
 
-<button ion-button block (click)="onLogin()">Login</button>
+	<button ion-button block (click)="onLogin()">Login</button>
 
-<ion-row>
-	<ion-col class="wp-links" text-center>
-		<h3>
-			<a href="{{ register }}">Not Registered?</a>
-		</h3>
-	</ion-col>
-</ion-row>
+	<ion-row>
+		<ion-col class="wp-links" text-center>
+			<h3>
+<a href="{{ register }}">Not Registered?</a>
+</h3>
+		</ion-col>
+	</ion-row>
 
-<ion-row>
-	<ion-col text-center>
-		<a href="{{ lostPassword }}">Lost Password?</a>
-	</ion-col>
-</ion-row>
+	<ion-row>
+		<ion-col text-center>
+			<a href="{{ lostPassword }}">Lost Password?</a>
+		</ion-col>
+	</ion-row>
 
 </ion-content>

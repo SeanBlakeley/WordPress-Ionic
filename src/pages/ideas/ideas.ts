@@ -17,13 +17,20 @@ export class IdeasPage {
 
 		this.ideasProvider.getIdeas().subscribe(data => {
 
-			if ( Object.keys(data).length <= 0 ) {
+			if (Object.keys(data).length <= 0) {
 				this.pushPage();
 			}
 			this.ideas = data;
 			this.initializeItems();
 		});
 
+	}
+
+	ionViewDidEnter() {
+		this.ideasProvider.getIdeas().subscribe(data => {
+			this.ideas = data;
+			this.initializeItems();
+		});
 	}
 
 	showDeleteConfirm(ideaID) {
@@ -34,7 +41,7 @@ export class IdeasPage {
 				{
 					text: 'Delete',
 					handler: () => {
-						this.ideasProvider.deleteIdea( ideaID );
+						this.ideasProvider.deleteIdea(ideaID);
 						this.navCtrl.push('IdeasPage');
 					}
 				},
@@ -49,7 +56,7 @@ export class IdeasPage {
 		confirm.present();
 	}
 
-	pushPage(){
+	pushPage() {
 		// push another page on to the navigation stack
 		// causing the nav controller to transition to the new page
 		// optional data can also be passed to the pushed page.
@@ -61,7 +68,7 @@ export class IdeasPage {
 	}
 
 	ionViewDidLoad() {
-		console.log(this.ideas);
+		this.ionViewDidEnter();
 		console.log('ionViewDidLoad IdeasPage');
 	}
 
@@ -78,7 +85,7 @@ export class IdeasPage {
 	}
 
 	onEditIdea(idea) {
-		return this.navCtrl.push('EditIdeaPage', { idea: idea } );
+		return this.navCtrl.push('EditIdeaPage', { idea: idea });
 	}
 
 	getItems(ev) {

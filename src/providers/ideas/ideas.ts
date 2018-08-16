@@ -18,60 +18,59 @@ export class IdeasProvider {
 
 	getIdeas() {
 		console.log("refreshed ideas");
-		let user_id = JSON.parse( localStorage.getItem( 'wpIonicToken' ) ).user_id;
-		return this.http.get( this.api_url + '?_embed&author=' + user_id );
+		let user_id = JSON.parse(localStorage.getItem('wpIonicToken')).user_id;
+		return this.http.get(this.api_url + '?_embed&author=' + user_id);
 	}
 
-	postIdea( title, reminderText, reminderDate ) {
+	postIdea(title, reminderText, reminderDate) {
 		let data = {
 			title: title,
 			reminder_content: reminderText,
-			reminder_date: 1534327464,
-			author: JSON.parse( localStorage.getItem( 'wpIonicToken' ) ).user_id,
+			reminder_date: reminderDate,
+			author: JSON.parse(localStorage.getItem('wpIonicToken')).user_id,
 			status: 'publish'
 		};
 
-		let token = JSON.parse( localStorage.getItem( 'wpIonicToken' ) ).token;
+		let token = JSON.parse(localStorage.getItem('wpIonicToken')).token;
 
 		let headers = new HttpHeaders({
 			'Content-Type': 'application/json',
 			'Authorization': 'Bearer ' + token
 		});
 
-			console.log( headers);
-		return this.http.post( this.api_url, data, { headers: headers } );
+		console.log(headers);
+		return this.http.post(this.api_url, data, { headers: headers });
 	}
 
-	editIdea( id, title, reminderText, reminderDate ) {
+	editIdea(id, title, reminderText, reminderDate) {
 		let data = {
 			title: title,
 			reminder_content: reminderText,
-			reminder_date: 1534327464,
+			reminder_date: reminderDate,
 			status: 'publish'
 		};
 
-		let token = JSON.parse( localStorage.getItem( 'wpIonicToken' ) ).token;
+		let token = JSON.parse(localStorage.getItem('wpIonicToken')).token;
 
 		let headers = new HttpHeaders({
 			'Content-Type': 'application/json',
 			'Authorization': 'Bearer ' + token
 		});
 
-		console.log( headers);
-		return this.http.put( this.api_url + '/' + id, data, { headers: headers } );
+		return this.http.put(this.api_url + '/' + id, data, { headers: headers });
 	}
 
-	deleteIdea( id ) {
+	deleteIdea(id) {
 
-		console.log(  this.api_url + '/' + id );
-		let token = JSON.parse( localStorage.getItem( 'wpIonicToken' ) ).token;
+		console.log(this.api_url + '/' + id);
+		let token = JSON.parse(localStorage.getItem('wpIonicToken')).token;
 
 		let headers = new HttpHeaders({
 			'Content-Type': 'application/json',
 			'Authorization': 'Bearer ' + token
 		});
 
-		this.http.delete( this.api_url + '/' + id, { headers: headers } ).subscribe(
+		this.http.delete(this.api_url + '/' + id, { headers: headers }).subscribe(
 			resp => console.log('deleted'),
 			error => console.log('error occur, delete fail')
 		);

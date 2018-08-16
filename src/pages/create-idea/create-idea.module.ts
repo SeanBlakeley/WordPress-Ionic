@@ -3,11 +3,11 @@ import { IonicPageModule } from 'ionic-angular';
 import { CreateIdeaPage } from './create-idea';
 
 @NgModule({
-  declarations: [
-    CreateIdeaPage,
-  ],
-  imports: [
-    IonicPageModule.forChild(CreateIdeaPage),
-  ],
+	declarations: [
+		CreateIdeaPage,
+	],
+	imports: [
+		IonicPageModule.forChild(CreateIdeaPage),
+	],
 })
-export class CreateIdeaPageModule {}
+export class CreateIdeaPageModule { }

@@ -21,8 +21,8 @@ export class IdeasDetailPage {
 	id;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, private ideasProvider: IdeasProvider, public alertCtrl: AlertController) {
-		this.idea = this.navParams.get( 'idea' );
-		console.log( this.idea );
+		this.idea = this.navParams.get('idea');
+		console.log(this.idea);
 	}
 
 	ionViewDidLoad() {
@@ -30,7 +30,7 @@ export class IdeasDetailPage {
 	}
 
 	onGoToEditIdea() {
-		this.navCtrl.push( 'EditIdeaPage', { idea: this.idea } );
+		this.navCtrl.push('EditIdeaPage', { idea: this.idea });
 	}
 
 	onGoToDeleteIdea() {
@@ -47,7 +47,7 @@ export class IdeasDetailPage {
 				{
 					text: 'Delete',
 					handler: () => {
-						this.ideasProvider.deleteIdea( ideaID );
+						this.ideasProvider.deleteIdea(ideaID);
 						this.navCtrl.push('IdeasPage');
 					}
 				},

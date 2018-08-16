@@ -22,9 +22,9 @@ export class LoginPage {
 	register = environment.site_url + '/wp-login.php?action=register';
 	lostPassword = environment.site_url + '/wp-login.php?action=lostpassword';
 
-	constructor(public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider ) {
-		if( localStorage.getItem( 'wpIonicToken' ) ) {
-			this.navCtrl.setRoot( 'TabsPage' );
+	constructor(public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider) {
+		if (localStorage.getItem('wpIonicToken')) {
+			this.navCtrl.setRoot('TabsPage');
 		}
 	}
 
@@ -33,11 +33,11 @@ export class LoginPage {
 	}
 
 	onLogin() {
-		console.log( this.username, this.password );
-		this.authProvider.postLogin( this.username, this.password ).subscribe( data => {
-			console.log( data );
-			localStorage.setItem( 'wpIonicToken', JSON.stringify( data ) );
-			this.navCtrl.push( 'TabsPage' );
+		console.log(this.username, this.password);
+		this.authProvider.postLogin(this.username, this.password).subscribe(data => {
+			console.log(data);
+			localStorage.setItem('wpIonicToken', JSON.stringify(data));
+			this.navCtrl.push('TabsPage');
 		});
 	}
 }

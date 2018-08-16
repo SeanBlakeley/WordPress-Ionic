@@ -17,19 +17,28 @@ import { IdeasProvider } from '../../providers/ideas/ideas';
 export class EditIdeaPage {
 
 	idea;
+	ideas;
 	id;
 	title;
 	reminderText;
 	reminderDate;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, private ideasProvider: IdeasProvider) {
-		this.idea = this.navParams.get( 'idea' );
+		this.idea = this.navParams.get('idea');
 
 		this.title = this.idea.title.rendered;
 		this.reminderText = this.idea.reminder_content;
 		this.reminderDate = this.idea.reminder_date;
+		console.log(this.reminderDate);
 		this.id = this.idea.id;
 
+	}
+
+	pushPage() {
+		// push another page on to the navigation stack
+		// causing the nav controller to transition to the new page
+		// optional data can also be passed to the pushed page.
+		this.navCtrl.push('FirstIdeaPage');
 	}
 
 	ionViewDidLoad() {
@@ -37,9 +46,24 @@ export class EditIdeaPage {
 	}
 
 	onEditIdea() {
-		this.ideasProvider.editIdea( this.id, this.title, this.reminderText, this.reminderDate ).subscribe( data => {
-			console.log( data );
-			this.navCtrl.push( 'TabsPage' );
+		if (this.reminderDate) {
+			var timestamp = this.reminderDate;
+			timestamp.replace('-', '/');
+			this.reminderDate = Date.parse(this.reminderDate);
+		} else {
+			this.reminderDate = 0;
+		}
+		this.ideasProvider.editIdea(this.id, this.title, this.reminderText, this.reminderDate).subscribe(data => {
+			this.ideasProvider.getIdeas().subscribe(data => {
+
+				if (Object.keys(data).length <= 0) {
+					this.pushPage();
+				}
+				this.ideas = data;
+
+				console.log(data);
+				this.navCtrl.push('TabsPage');
+			});
 		});
 	}
 

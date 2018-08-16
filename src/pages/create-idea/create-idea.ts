@@ -22,7 +22,8 @@ export class CreateIdeaPage {
 	reminderText;
 	reminderDate;
 
-	constructor(public navCtrl: NavController, public navParams: NavParams, private ideasProvider: IdeasProvider ) {
+	constructor(public navCtrl: NavController, public navParams: NavParams, private ideasProvider: IdeasProvider) {
+		//		this.reminderDate = new Date().toISOString();
 	}
 
 	ionViewDidLoad() {
@@ -30,9 +31,16 @@ export class CreateIdeaPage {
 	}
 
 	onAddIdea() {
-		this.ideasProvider.postIdea( this.title, this.reminderText, this.reminderDate).subscribe( data => {
-			console.log( data );
-			this.navCtrl.push( 'TabsPage' );
+		if (this.reminderDate) {
+			var timestamp = this.reminderDate;
+			timestamp.replace('-', '/');
+			this.reminderDate = Date.parse(this.reminderDate);
+		} else {
+			this.reminderDate = 0;
+		}
+		this.ideasProvider.postIdea(this.title, this.reminderText, this.reminderDate).subscribe(data => {
+			console.log(data);
+			this.navCtrl.push('TabsPage');
 		});
 	}
 
